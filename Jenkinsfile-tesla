@@ -1,0 +1,27 @@
+node{
+    def mavenHome = tool name: "maven3.6"
+ stage('1clone'){
+     git "https://github.com/Sekou-sDevOps/tesla-app"
+    //git branch: 'development', credentialsId: 'githubCredentials', url: 'https://github.com/Sekou-sDevOps/tesla-app/tree/development'
+ }  
+  stage('2Test+build'){
+ sh "${mavenHome}/bin/mvn clean package"
+  }
+  stage('3SonarQube'){
+      sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4UploadArtifacts'){
+    sh "${mavenHome}/bin/mvn sonar:sonar"   
+  }
+  stage('5.Deploy2UAT'){
+    deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://54.183.64.46:8177/')], contextPath: null, war: 'target/*war'
+  }
+  stage('6Notification'){
+      emailext body: '''Hi team, 
+
+Build status 
+
+Landmark Technologies. ''', recipientProviders: [developers(), contributor()], subject: 'build status', to: 'developers' 
+  }
+
+}
