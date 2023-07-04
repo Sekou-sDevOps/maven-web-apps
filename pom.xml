@@ -24,7 +24,7 @@
                 <log4j.version>1.2.17</log4j.version>
                 <sonar.host.url>http:54.183.209.162:9000/</sonar.host.url>
                 <sonar.login>b54d49d808edc066508bca36999d7c8235a35e20</sonar.login>
-                <!-- <sonar.password>admin</sonar.password> -->
+                <!-- <sonar.password>admin123</sonar.password> -->
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         </properties>
@@ -95,13 +95,13 @@
             <repository>
               <id>nexus</id>
               <name>Landmark Technologies Releases Nexus Repository</name>
-              <url>http://54.193.4.124:8081/repository/tesla-releases/</url>
+              <url>http://54.193.4.124:8081/repository/maven-releases/</url>
             </repository>
 
              <snapshotRepository>
               <id>nexus</id>
-              <name>Landmark Technologies Snapshot Nexus Repository </name>
-              <url>http://54.193.4.124:8081/repository/tesla-snapshot/</url>
+              <name>Landmark Technologies Snapshot Nexus Repository</name>
+              <url>http://54.193.4.124:8081/repository/maven-snapshot/</url>
             </snapshotRepository>
 
         </distributionManagement>
